@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBContainer, MDBBtn, MDBBtnGroup} from 'mdbreact'
 import './App.css';
 
