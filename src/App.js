@@ -1,22 +1,48 @@
-import React, { Component } from 'react';
-import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBContainer, MDBBtn, MDBBtnGroup} from 'mdbreact'
+import React from 'react';
+import {IconButton, Card, CardActions, CardContent, Typography, Paper, List, ListItem, Tooltip} from '@material-ui/core';
+import {Delete} from '@material-ui/icons';
+import { withStyles } from '@material-ui/core/styles';
 import './App.css';
 
-const App = () => {
+const styles = {
+  card: {
+    width: '100%'
+  }
+}
+const App = ({classes}) => {
   return(
-    <MDBContainer>
-      <MDBCard>
-        <MDBCardBody>
-          <MDBCardTitle>Title</MDBCardTitle>
-          <MDBCardText>iygiutfiyuglkjnlkjnpoi bjhb jkh ijh iuh  iuh oih oij oij </MDBCardText>
-          <MDBBtnGroup>
-            <MDBBtn onClick={(_) => alert("hi 1")}>1</MDBBtn>
-            <MDBBtn>2</MDBBtn>
-            <MDBBtn>3</MDBBtn>
-            </MDBBtnGroup>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBContainer>
+    <Paper>
+      <List>
+        <ListItem >
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography>TEst test</Typography>
+            </CardContent>
+            <CardActions>
+              <Tooltip title="Delete">
+                <IconButton aria-label="Delete">
+                  <Delete />
+                </IconButton>
+              </Tooltip>
+            </CardActions>
+          </Card>
+        </ListItem>
+        <ListItem>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography>TEst 22 test</Typography>
+            </CardContent>
+            <CardActions>
+              <Tooltip title="Delete">
+                <IconButton aria-label="Delete">
+                  <Delete />
+                </IconButton>
+              </Tooltip>
+            </CardActions>
+          </Card>
+        </ListItem>
+      </List>
+    </Paper>
   )
 }
-export default App;
+export default withStyles(styles)(App);
