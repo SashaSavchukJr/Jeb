@@ -1,46 +1,37 @@
-import React from 'react';
-import {IconButton, Card, CardActions, CardContent, Typography, Paper, List, ListItem, Tooltip} from '@material-ui/core';
+import React, {useState} from 'react';
+import {Paper, List} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
-import './App.css';
+import Task from './Task'
 
 const styles = {
   card: {
     width: '100%'
   }
 }
+
+const mockTasks = [{
+  title:"Lorem Ipsum",
+  text:"kjhrskjfhg fjghfjg fjdsgtg nnfruufh  dy..",
+  isComplete: false,
+  isArchived: false,
+  dateCreated: new Date(),
+  dateUpdated: new Date()
+},
+{
+  title:"Lorem Ipsum2.0",
+  text:"kjhgksjnhb khsgfiuhf jhsnfkjgh   uidsfyt.!",
+  isComplete: false,
+  isArchived: false,
+  dateCreated: new Date(),
+  dateUpdated: new Date()
+}]
 const App = ({classes}) => {
-  return(
+  const [tasks,addTask] = useState(mockTasks)
+  return (
     <Paper>
       <List>
-        <ListItem >
-          <Card className={classes.card}>
-            <CardContent>
-              <Typography>TEst test</Typography>
-            </CardContent>
-            <CardActions>
-              <Tooltip title="Delete">
-                <IconButton aria-label="Delete">
-                  <Delete />
-                </IconButton>
-              </Tooltip>
-            </CardActions>
-          </Card>
-        </ListItem>
-        <ListItem>
-          <Card className={classes.card}>
-            <CardContent>
-              <Typography>TEst 22 test</Typography>
-            </CardContent>
-            <CardActions>
-              <Tooltip title="Delete">
-                <IconButton aria-label="Delete">
-                  <Delete />
-                </IconButton>
-              </Tooltip>
-            </CardActions>
-          </Card>
-        </ListItem>
+        {tasks.map(task => <Task state={task}/>)}
       </List>
     </Paper>
   )
