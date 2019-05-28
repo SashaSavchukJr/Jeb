@@ -13,17 +13,22 @@ const styles = {
   }
 }
 
-const Task = ({classes, state}) => {
+const Task = ({classes, task, updateTasks}) => {
   return (
-    <ListItem>
+    <ListItem key={task.id}>
         <Card raised className={classes.card}>
             <CardContent>
-                <Typography variant={"h1"}>{state.title}</Typography>
-                <Typography paragraph >{state.text}</Typography>
+                <Typography variant={"h1"}>{task.title}</Typography>
+                <Typography paragraph >{task.text}</Typography>
             </CardContent>
             <CardActions>
             <Tooltip title="Delete">
-                <IconButton aria-label="Delete">
+                <IconButton aria-label="Delete" onClick={() => updateTasks(prevTasks => {
+
+                    const updatedTasks = prevTasks.filter(t => t.id !== task.id)
+                    console.log(task, updatedTasks, prevTasks)
+                    return updatedTasks
+                })}>
                 <Delete />
                 </IconButton>
             </Tooltip>

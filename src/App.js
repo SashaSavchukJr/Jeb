@@ -13,23 +13,24 @@ const styles = {
   }
 }
 
-const sampleTask = {
+const sampleTask = id => ({
+  id,
   title:"Lorem Ipsum",
   text:"kjhrskjfhg fjghfjg fjdsgtg nnfruufh  dy..",
   isComplete: false,
   isArchived: false,
   dateCreated: new Date(),
   dateUpdated: new Date()
-}
+})
 
 const App = ({classes}) => {
-  const [tasks,addTask] = useState([])
+  const [tasks, updateTasks] = useState([])
   return (
     <Paper>
       <List>
-        {tasks.map(task => <Task state={task}/>)}
+        {tasks.map(task => <Task task={task} updateTasks={updateTasks}/>)}
       </List>
-      <Button onClick={() => addTask(prevTasks => [...prevTasks, sampleTask])}
+      <Button onClick={() => updateTasks(prevTasks => [...prevTasks, sampleTask(Math.round(Math.random() * 1000000))])}
       className={classes.button}>
         New Task
       </Button>  
